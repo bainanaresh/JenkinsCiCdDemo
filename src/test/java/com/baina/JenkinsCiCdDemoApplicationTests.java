@@ -24,11 +24,6 @@ class JenkinsCiCdDemoApplicationTests {
 	private MockMvc mockMvc;
 	@Autowired
 	private WebApplicationContext context;
-
-	@Before
-	public void setUp() {
-		
-	}
 	
 	@Test
 	void contextLoads() throws Exception {
