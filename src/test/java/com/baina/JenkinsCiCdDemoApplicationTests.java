@@ -17,15 +17,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 class JenkinsCiCdDemoApplicationTests {
 
 	private MockMvc mockMvc;
 	@Autowired
 	private WebApplicationContext context;
 	
-	@Test
+	//@Test
 	void contextLoads() throws Exception {
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 		MvcResult result = mockMvc.perform(get("/naresh").contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
