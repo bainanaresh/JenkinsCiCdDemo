@@ -2,34 +2,28 @@ package com.baina;
 
 
 
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
+import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.Test;
+
 @SpringBootTest
+@AutoConfigureMockMvc
 class JenkinsCiCdDemoApplicationTests {
 
-	private MockMvc mockMvc;
 	@Autowired
-	private WebApplicationContext context;
-	
-	@Test
-	void contextLoads() throws Exception {
-		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/naresh").contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-		String resultContent = result.getResponse().getContentAsString();
-		Assert.assertEquals(resultContent , "welcome to web app naresh");
-	}
+    private MockMvc mockMvc;
+
+    @Test
+    public void testHelloWorld() throws Exception {
+        mockMvc.perform(get("/naresh"))
+               .andExpect(status().isOk())
+               .andExpect(content().string("welcome to web app naresh"));
+    }
 
 }
