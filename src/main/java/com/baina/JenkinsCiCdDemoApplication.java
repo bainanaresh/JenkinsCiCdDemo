@@ -14,7 +14,7 @@ public class JenkinsCiCdDemoApplication {
 		SpringApplication.run(JenkinsCiCdDemoApplication.class, args);
 	}
 	
-	//comment added
+	//comment addeddd
 	@GetMapping("/{name}")
 	public String getMessage(@PathVariable String name) {
 		return "welcome to web app "+name;
